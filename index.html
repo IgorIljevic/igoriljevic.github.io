@@ -1,0 +1,115 @@
+ 
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8"></meta>
+    <link rel="stylesheet" href="page.css"></link>
+    
+    <style>
+    .vidrect{
+        display: inline-block;
+        width: 30vw;
+        height: 30vw;
+        
+        max-width: 400px;
+        max-height: 400px;
+        
+        border: solid;
+        border-width: 2px;
+        border-color: #00004fff;
+        background-color: #000000ff;
+        margin: 3px;
+        
+        cursor: pointer;
+        transition-duration: 0.4s;
+    }
+    .vidrect:hover{
+        transition-duration: 0.4s;
+        transform: scale(1.1);
+    }
+    .dialtop{
+        height: 50px;
+        background-color: #16163dff;
+    }
+    .player{
+        position: fixed;
+        transition-duration: 0.3s;
+        left: 50%;
+        top: 0px;
+        background-color: #000000ff;
+    }
+    .player_hidden{        
+        width: 10%;
+        height: 10%;
+        top: -50px;
+        transform: translate(-50%, -100%);
+        transition-duration: 0.3s;
+    }
+    .player_visible{      
+        width: 90%;
+        height: 90%;
+        transform: translate(-50%);
+        transition-duration: 0.5s;
+    }
+    #videolist{
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        width: auto;
+    }
+    #playercnt{
+        position: fixed;
+        left: 0px;
+        top: 0px;
+        width: 100vw;
+        height: 100vh;
+        
+        transition-duration: 0.6s;
+    }
+    #player_black{
+        position: fixed;
+        left: 0px;
+        top: 0px;
+        width: 100vw;
+        height: 100vh;
+        
+        background-color: #0000004f;
+    }
+    </style>
+</head>
+<script src="page.js"></script>
+<body>
+<!-- 
+TEXTS:
+
+In few days, russian goverment will fully block internet traffic outside country
+
+
+Because communication may will be unavailable, i would like to invent all people to demonstration in one date: 10. March 2022  12:00 Moscow,  Пу́шкинская пло́щадь
+
+Don't believe? Watch theese videos
+-->
+    <p style="color: #006fffff; ">текст машинным переводом с английского языка </p>
+    <p>Правда об Украине:</p>
+    <p>Пожалуйста, скачайте этот файл, пока его не заблокировали!</p>
+    <a href="download/package.zip">файл здесь</a>
+    
+    <p>Через несколько дней правительство России полностью заблокирует интернет-трафик за пределами страны!</p>
+    <p>В России проходят массовые демонстрации, но эта информация проходит цензуру. </p>
+    <p>В связи с тем, что связь может быть недоступна, хотелось бы собрать всех людей на демонстрацию в одну дату: 10.03.2022 12:00 Москва, Пушкинская пло́щадь </p>
+    <p style="font-size: 16px; font-weight: bold;">Не верите? Посмотрите эти видео:</p>
+    <div id="videolist">
+        
+    </div>
+    <div style="display: none" id="playercnt">
+        <div id="player_black"> </div>
+        <div id="player" class="player player_hidden">
+            <div class="dialtop">
+                <button class="custbtn" style="position: relative; left: 100%; width: 50px; height: 50px; transform: translateX(-100%)" onclick="hideplayer()">X</button>
+            </div>
+            <video style="top: 50px; width: 100%; max-height: 100%" controls="true" id="player_vid"></video>
+            <!--<div class="player_control">
+                <button onclick="player_playpause()">Play / Pause</button>
+            </div>-->
+        </div>
+    </div>
+</body>
