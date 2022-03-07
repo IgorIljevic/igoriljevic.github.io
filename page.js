@@ -43,7 +43,14 @@ window.addEventListener("load", async function(){
     player_black.addEventListener("click", hideplayer);
     
     var resptext = "";
-    await fetch("video/videos.list").then(r => r.text()).then(t => {resptext = t});
+    await fetch("video/videos.list").then(r => {
+        if(r.ok){
+            r.text()
+        }else{
+            throw new Error("Cannot load video list");
+        }
+        
+    }).then(t => {resptext = t});
     var lns = resptext.split("\n");
     for(i in lns){
         var v = document.createElement("video");
