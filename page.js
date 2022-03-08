@@ -43,23 +43,17 @@ window.addEventListener("load", async function(){
     player_black.addEventListener("click", hideplayer);
     
     var resptext = "";
-    await fetch("video/videos.list").then(r => {
-        if(r.ok){
-            r.text()
-        }else{
-            throw new Error("Cannot load video list");
+    await fetch("video/videos.list").then(r => r.text()).then(resptext => {
+        var lns = resptext.split("\n");
+        for(i in lns){
+            var v = document.createElement("video");
+            v.src = "video/" + lns[i];
+            v.className = "vidrect";
+            v.addEventListener("click", function(){
+                player_vid.src = this.src;
+                showplayer();
+            });
+            vlist.appendChild(v);
         }
-        
-    }).then(t => {resptext = t});
-    var lns = resptext.split("\n");
-    for(i in lns){
-        var v = document.createElement("video");
-        v.src = "video/" + lns[i];
-        v.className = "vidrect";
-        v.addEventListener("click", function(){
-            player_vid.src = this.src;
-            showplayer();
-        });
-        vlist.appendChild(v);
-    }
+    });
 });
